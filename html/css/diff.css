@@ -31,6 +31,11 @@
 	overflow: auto;
 }
 
+.diff .file .diffContent .lineno .showSourceLine:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .diff .file .diffContent .lines .hunkheader {
   background-color: #f7f7f7;
   color: #bbb;

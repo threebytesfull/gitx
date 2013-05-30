@@ -130,6 +130,12 @@ decisionListener:(id <WebPolicyDecisionListener>)listener
 	NSLog(@"%@", logMessage);
 }
 
+- (void)showOriginOfLine:(NSUInteger)lineNum inPath:(NSString *)path parentLevel:(NSUInteger)parentLevel
+{
+    NSLog(@"Would find source for line %lu in %@ in %@ commit",
+          lineNum, path, parentLevel ? @"parent" : @"this");
+}
+
 - (BOOL) isReachable:(NSString *)hostname
 {
     SCNetworkReachabilityRef target;

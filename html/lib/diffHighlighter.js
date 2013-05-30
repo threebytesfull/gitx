@@ -35,6 +35,13 @@ var highlightDiff = function(diff, element, callbacks) {
 
 	var header = false;
 
+    var showSourceLineCall = function(hunk_line_num, parent_level)
+    {
+        var sourcename = parent_level ? startname : endname;
+        return "<span class=\"showSourceLine\" onClick=\"Controller.showOriginOfLine_inPath_parentLevel_("
+            + hunk_line_num + ", '" + sourcename + "', " + parent_level + ")\">" + hunk_line_num + "</span>\n";
+    }
+
 	var finishContent = function()
 	{
 		if (!file_index)
@@ -193,10 +200,10 @@ var highlightDiff = function(diff, element, callbacks) {
 				l = l.replace(/\s+$/, "<span class='whitespace'>" + m + "</span>");
 
 			line1 += "\n";
-			line2 += ++hunk_start_line_2 + "\n";
+			line2 += showSourceLineCall(++hunk_start_line_2, 0);
 			diffContent += "<div " + sindex + "class='addline'>" + l + "</div>";
 		} else if (firstChar == "-") {
-			line1 += ++hunk_start_line_1 + "\n";
+			line1 += showSourceLineCall(++hunk_start_line_1, 1);
 			line2 += "\n";
 			diffContent += "<div " + sindex + "class='delline'>" + l + "</div>";
 		} else if (firstChar == "@") {
@@ -213,8 +220,8 @@ var highlightDiff = function(diff, element, callbacks) {
 			line2 += "...\n";
 			diffContent += "<div " + sindex + "class='hunkheader'>" + l + "</div>";
 		} else if (firstChar == " ") {
-			line1 += ++hunk_start_line_1 + "\n";
-			line2 += ++hunk_start_line_2 + "\n";
+			line1 += showSourceLineCall(++hunk_start_line_1, 1);
+			line2 += showSourceLineCall(++hunk_start_line_2, 0);
 			diffContent += "<div " + sindex + "class='noopline'>" + l + "</div>";
 		}
 		lindex++;
