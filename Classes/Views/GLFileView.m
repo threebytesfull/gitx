@@ -79,11 +79,11 @@
 		PBGitTree *file=[files objectAtIndex:0];
 
 		NSString *fileTxt = @"";
-		if(startFile==@"fileview")
+		if([startFile isEqualToString:@"fileview"])
 			fileTxt=[self parseHTML:[file textContents]];
-		else if(startFile==@"blame")
+		else if([startFile isEqualToString:@"blame"])
 			fileTxt=[self parseBlame:[file blame]];
-		else if(startFile==@"log")
+		else if([startFile isEqualToString:@"log"])
 			fileTxt=[file log:logFormat];
 
 		id script = [view windowScriptObject];
