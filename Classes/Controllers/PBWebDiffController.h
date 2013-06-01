@@ -9,10 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "PBWebController.h"
 #import "PBDiffWindowController.h"
+#import "PBGitDiff.h"
 
 @interface PBWebDiffController : PBWebController {
 	IBOutlet PBDiffWindowController *diffController;
 }
 
-- (void) showDiff:(NSString *)diff;
+- (void) showDiff:(PBGitDiff *)diff;
 @end

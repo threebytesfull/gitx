@@ -9,13 +9,16 @@
 #import <Cocoa/Cocoa.h>
 
 @class PBGitCommit;
+@class PBGitDiff;
 
 @interface PBDiffWindowController : NSWindowController {
-	NSString *diff;
+	PBGitDiff *diff;
 }
 
 + (void) showDiffWindowWithFiles:(NSArray *)filePaths fromCommit:(PBGitCommit *)startCommit diffCommit:(PBGitCommit *)diffCommit;
-- (id) initWithDiff:(NSString *)diff;
+- (id) initWithDiff:(PBGitDiff *)diff;
+- (PBGitCommit *)startCommit;
+- (PBGitCommit *)diffCommit;
 
-@property (readonly) NSString *diff;
+@property (readonly) PBGitDiff *diff;
 @end

@@ -11,7 +11,7 @@
 #import "PBDiffWindowController.h"
 #import "PBRepositoryDocumentController.h"
 #import "PBCloneRepositoryPanel.h"
-
+#import "PBGitDiff.h"
 
 @implementation NSApplication (GitXScripting)
 
@@ -19,7 +19,9 @@
 {
 	NSString *diffText = [command directParameter];
 	if (diffText) {
-		PBDiffWindowController *diffController = [[PBDiffWindowController alloc] initWithDiff:diffText];
+        // construct diff object from diff output (extract from/to commit sha)
+        PBGitDiff *diff = [PBGitDiff diffWithDiffText:diffText];
+		PBDiffWindowController *diffController = [[PBDiffWindowController alloc] initWithDiff:diff];
 		[diffController showWindow:nil];
 		[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	}

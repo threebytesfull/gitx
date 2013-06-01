@@ -37,16 +37,16 @@
 		[self showDiff:diffController.diff];
 }
 
-- (void) showDiff: (NSString *) diff
+- (void) showDiff: (PBGitDiff *) diff
 {
 	if (diff == nil || !finishedLoading)
 		return;
 
 	id script = [view windowScriptObject];
-	if ([diff length] == 0)
+	if ([diff.diffText length] == 0)
 		[script callWebScriptMethod:@"setMessage" withArguments:[NSArray arrayWithObject:@"There are no differences"]];
 	else
-		[script callWebScriptMethod:@"showDiff" withArguments:[NSArray arrayWithObject:diff]];
+		[script callWebScriptMethod:@"showDiff" withArguments:[NSArray arrayWithObject:diff.diffText]];
 }
 
 @end
