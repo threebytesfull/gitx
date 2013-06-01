@@ -302,6 +302,6 @@
 - (void) dealloc
 {
 	if (localFileName)
-		[[NSFileManager defaultManager] removeFileAtPath:localFileName handler:nil];
+		[[NSFileManager defaultManager] removeItemAtPath:localFileName error:nil];
 }
 @end
