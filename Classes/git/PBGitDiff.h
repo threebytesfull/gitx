@@ -37,4 +37,6 @@
 
 - (PBGitDiff *)initWithDiffText:(NSString *)diffText;
 
+- (BOOL)hasDifferences;
+
 @end

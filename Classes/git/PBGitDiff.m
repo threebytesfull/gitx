@@ -85,4 +85,9 @@
     abort();
 }
 
+- (BOOL)hasDifferences
+{
+    return (diffText.length > 0);
+}
+
 @end

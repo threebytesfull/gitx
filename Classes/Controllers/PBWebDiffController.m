@@ -43,7 +43,7 @@
 		return;
 
 	id script = [view windowScriptObject];
-	if ([diff.diffText length] == 0)
+    if (diff.hasDifferences)
 		[script callWebScriptMethod:@"setMessage" withArguments:[NSArray arrayWithObject:@"There are no differences"]];
 	else
 		[script callWebScriptMethod:@"showDiff" withArguments:[NSArray arrayWithObject:diff.diffText]];
